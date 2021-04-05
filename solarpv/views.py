@@ -4,6 +4,55 @@ from .forms import ProductForm, CertificateForm, ServiceForm, LocationForm, Clie
 from django.http import HttpResponseRedirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from rest_framework import viewsets
+from rest_framework.permissions import IsAdminUser
+from .serializers import ProductSerializer, CertificateSerializer, ServiceSerializer, LocationSerializer, ClientSerializer, PerformanceDataSerializer, TestSequenceSerializer, TestStandardSerializer
+
+###############################################################
+# API serializers
+###############################################################
+
+class ProductAPIView(viewsets.ModelViewSet):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
+    permission_classes = [IsAdminUser]
+
+class CertificateAPIView(viewsets.ModelViewSet):
+    queryset = Certificate.objects.all()
+    serializer_class = CertificateSerializer    
+    permission_classes = [IsAdminUser]
+
+class ServiceAPIView(viewsets.ModelViewSet):
+    queryset = Service.objects.all()
+    serializer_class = ServiceSerializer
+    permission_classes = [IsAdminUser]
+
+class ClientAPIView(viewsets.ModelViewSet):
+    queryset = Client.objects.all()
+    serializer_class = ClientSerializer
+    permission_classes = [IsAdminUser]
+
+class LocationAPIView(viewsets.ModelViewSet):
+    queryset = Location.objects.all()
+    serializer_class = LocationSerializer
+    permission_classes = [IsAdminUser]
+
+class PerformanceDataAPIView(viewsets.ModelViewSet):
+    queryset = PerformanceData.objects.all()
+    serializer_class = PerformanceDataSerializer
+    permission_classes = [IsAdminUser]
+    
+class TestSequenceAPIView(viewsets.ModelViewSet):
+    queryset = TestSequence.objects.all()
+    serializer_class = TestSequenceSerializer
+    permission_classes = [IsAdminUser]
+
+class TestStandardAPIView(viewsets.ModelViewSet):
+    queryset = TestStandard.objects.all()
+    serializer_class = TestStandardSerializer
+    permission_classes = [IsAdminUser]
+
+
 
 # basic page views
 
@@ -222,7 +271,7 @@ def search_locations_view(request):
 def location_search_results_view(request):  
     if request.method == "POST":
         searched = request.POST['searched']
-        locations = Location.objects.filter(location_id__contains=searched)
+        locations = Location.objects.filter(address1__contains=searched)
         return render(request, 'locations/location_search_results.html', {'searched':searched, 'locations':locations})
     else:  
         return render(request, 'locations/location_search_results.html', {})
@@ -471,3 +520,4 @@ def delete_test_standard_view(request, test_standard_id):
         test_standard.delete()
         return redirect('list-test-standards')
     return render(request, 'test_standards/delete_test_standard.html', {'test_standard':test_standard})
+

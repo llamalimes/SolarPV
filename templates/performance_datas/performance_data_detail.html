@@ -22,8 +22,12 @@
             {{ performace_data.ff }}
           </p>
           <br/>
-          <a class="btn btn-info" href="{% url 'update-performance-data' performance_data.id %}">Update</a>
-          <a class="btn btn-danger" href="{% url 'delete-performance-data' performance_data.id %}">Delete</a>
+          {% if user.is_staff %}
+            <a class="btn btn-info" href="{% url 'update-performance-data' performance_data.id %}">Update</a>
+            <a class="btn btn-danger" href="{% url 'delete-performance-data' performance_data.id %}">Delete</a>
+            <a class="btn btn-primary" href="http://127.0.0.1:8000/performancedatas_api/">API</a>
+          {% else %}
+          {% endif %}
       </div>
     </div>
       <br/><br/><br/>

@@ -4,8 +4,8 @@
 
 {% block content %}
 
-        <h1 class="text-center">Service {{ service.service_name }}<br/></h1>
-        <hr>        
+  <h1 class="text-center">Service {{ service.service_name }}<br/></h1>
+  <hr>        
 
     
 
@@ -17,10 +17,14 @@
               Fi Required: {{ service.is_fi_required }}<br/>
               Fi Frequency: {{ service.fi_frequency }}<br/>
               Standard ID: {{ service.standard_id }}<br/>
-            </p>
-            <br/>
+          </p>
+          <br/>
+          {% if user.is_staff %}
             <a class="btn btn-info" href="{% url 'update-service' service.id %}">Update</a>
             <a class="btn btn-danger" href="{% url 'delete-service' service.id %}">Delete</a>
+            <a class="btn btn-primary" href="http://127.0.0.1:8000/services_api/">API</a>
+          {% else %}
+          {% endif %}
         </div>
       </div>
       <br/><br/><br/>

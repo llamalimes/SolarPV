@@ -2,12 +2,23 @@ from django.urls import path, include
 from . import views
 from django.conf.urls.static import static
 from django.conf import settings
+from rest_framework import routers
+
+router = routers.DefaultRouter()
+router.register('products_api', views.ProductAPIView)
+router.register('certificates_api', views.CertificateAPIView)
+router.register('services_api', views.ServiceAPIView)
+router.register('locations_api', views.LocationAPIView)
+router.register('clients_api', views.ClientAPIView)
+router.register('performancedatas_api', views.PerformanceDataAPIView)
+router.register('testsequences_api', views.TestSequenceAPIView)
+router.register('teststandards_api', views.TestStandardAPIView)
+
 
 urlpatterns = [
     path('', views.home_view, name='home'),
     path('portal/', views.portal_view, name='portal'),
-
-
+    path('', include(router.urls)),
 
     # Product
     path('product_list/', views.product_list_view, name='list-products'),
