@@ -25,7 +25,7 @@ SECRET_KEY = '!8r@rjfmulx4iyzn669k12t^f+&kg#)6+qibdx4fml5cp%zt9!'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['3.16.79.118']
 
 
 # Application definition
@@ -37,14 +37,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
+
     # My Apps
     'solarpv.apps.SolarpvConfig',
     'users.apps.UsersConfig',
     'localflavor',
     'crispy_forms',
     'rest_framework',
-    
+
 ]
 
 MIDDLEWARE = [
