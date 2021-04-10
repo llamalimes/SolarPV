@@ -12,7 +12,7 @@
         <link rel="stylesheet" href="{% static 'css/base.css' %}">
         <!-- icons from Font Awesome -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
-        
+
         <title>
         {% block title %}SOLAR PV{% endblock %}
         </title>
@@ -38,7 +38,7 @@
 
         <!-- Begin middle containers -->
         <div class="container-fluid">
-            
+
             <div class="row align-items-start">
                 <!-- column width no more than 12 columns per line... -3 -6 -3 = 12 columns -->
 
@@ -50,11 +50,11 @@
                         <h3 class="reg/login"><a href="{% url 'register' %}">Register</a> | <a href="{% url 'login' %}">Login</a></h3>
                     {% endif %}
                     <br/>
-                    
-        
+
+
                     <h5>PV Module</h5>
                     <ul>
-                        <li><a href="">Certification</a></li>
+                        <li><a href="{% url 'search-certificates' %}">Certification</a></li>
                         <li>PV Rating</li>
                     </ul>
 
@@ -76,7 +76,7 @@
                 </div>
 
                 <!-- Middle Column -->
-                <div class="col-6">                   
+                <div class="col-6">
                     {% if messages %}
                         {% for message in messages %}
                             <div class="alert alert-warning alert-dismissible fade show" role="alert">
@@ -114,7 +114,7 @@
                     </ul>
                 </div>
             </div>
-            
+
           </div>
 
         <!-- Begin Footer -->
