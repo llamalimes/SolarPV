@@ -5,9 +5,9 @@
 {% block content %}
     <center>
         <h1>Location<br/></h1>
-        <hr>        
+        <hr>
     </center>
-    
+
 
     <div class="card col-md-6 offset-md-3" style="width: 30rem;">
         <div class="card-body">
@@ -18,17 +18,16 @@
               {{ location.country }}<br/><br/>
               <i class="fas fa-phone-alt"></i> {{ location.phone_number }}<br/>
               <i class="fas fa-fax"></i> {{ location.fax_number }}
-            </p>
             <br/>
             {% if user.is_staff %}
               <a class="btn btn-info" href="{% url 'update-location' location.id %}">Update</a>
               <a class="btn btn-danger" href="{% url 'delete-location' location.id %}">Delete</a>
-              <a class="btn btn-primary" href="http://127.0.0.1:8000/locations_api/">API</a>
+              <a class="btn btn-primary" href="http://3.23.25.40:8000/locations_api/">API</a>
             {% else %}
             {% endif %}
         </div>
       </div>
-        
+
         <br/>
         <a class="btn btn-secondary" href="{% url 'list-products' %}">Return to List</a>
 
